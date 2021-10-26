@@ -1,0 +1,23 @@
+Features:
+
+Must have:
+-Navigation - mouse
+-Highlight/disallow incorrect values
+-HOw to play - documentation
+
+
+
+Good to have:
+-Themes
+-Navigation - KEyboard
+-small numbers
+-difficulty level
+- API - difficult
+
+
+
+Design:
+-Use a 9*9 grid
+-predefined templates
+
+- chk for sudoku API
