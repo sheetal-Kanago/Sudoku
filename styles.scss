@@ -53,3 +53,11 @@ body.dark{
   vertical-align: middle;
   text-align: center;
 }
+
+.buttons-container{
+  margin-top: 15px;
+}
+
+.buttons-container > button{
+  background-color: abstracts.$highLight-color;
+}
