@@ -60,3 +60,16 @@ function startGame(){
     // console.log(cell.innerHTML);    
   }  
 }
+
+function handleCellClick(){
+  clickedCell=this; 
+  let selectedCell=document.querySelector(".cell.cell--selected");
+  if(!selectedCell){ //if no cell is selected, select the curent one.
+    clickedCell.classList.add("cell--selected");
+    return;
+  }
+  selectedCell.classList.remove("cell--selected");//clear selection  
+  if(clickedCell.id != selectedCell.id){//If there is a selected cell and some other cell is clicked, select this cell.        
+    clickedCell.classList.add("cell--selected");
+  }
+}
