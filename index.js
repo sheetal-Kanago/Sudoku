@@ -42,3 +42,21 @@ window.onload=function(){
     // cell.onclick=cell.classList.add("cell--selected");
   }
 }
+
+function startGame(){
+  console.log("In startGame()");
+  // console.log(document.getElementsByClassName("cell"));
+  let cells=document.getElementsByClassName("cell");
+  // console.log(cells[0]);
+  // console.log(cells[80]);
+  // console.log(cells.length);
+  for(let i=0;i<cells.length;i++){
+  // cells.forEach((cell,index) => {
+    let cellValue=easy[0].charAt(i);
+    if(cellValue=="-"){
+      cellValue=" ";
+    }
+    cells[i].innerHTML=cellValue;
+    // console.log(cell.innerHTML);    
+  }  
+}
