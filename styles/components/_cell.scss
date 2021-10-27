@@ -1,0 +1,20 @@
+
+@use "../base/abstracts" as *;
+
+.cell{
+  border: 1px solid black;
+  height: 25px;
+  width: 25px;
+  margin:0px;
+  vertical-align: middle;
+  text-align: center;
+  &--rightBorder{
+    border-right: 2px solid black;
+  }
+  &--bottomBorder{
+    border-bottom: 2px solid black;
+  }
+  &--selected{
+    background-color: $highLight-color;
+  }
+}

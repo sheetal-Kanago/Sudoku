@@ -1,0 +1,17 @@
+.cell {
+  border: 1px solid black;
+  height: 25px;
+  width: 25px;
+  margin: 0px;
+  vertical-align: middle;
+  text-align: center;
+}
+.cell--rightBorder {
+  border-right: 2px solid black;
+}
+.cell--bottomBorder {
+  border-bottom: 2px solid black;
+}
+.cell--selected {
+  background-color: #f5abab;
+}

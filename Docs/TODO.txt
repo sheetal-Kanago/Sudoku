@@ -1,3 +1,7 @@
+ManInfra
+1000
+1000- if falls 
+
 Features:
 
 Must have:
@@ -14,10 +18,22 @@ Good to have:
 -difficulty level
 - API - difficult
 
-
+===========================================
 
 Design:
 -Use a 9*9 grid
 -predefined templates
-
 - chk for sudoku API
+===========================================
+Questions:
+
+
+===========================================
+TODO: 
+- when number is clicked, if there is a selected cell, add number.value to seelctedcell.inner HTML
+- If number selected is not as per solution, make font red, blink for 2 seconds and remove. Keep selection.
+- After each number is added, check if added numbers = solution. If yes, display msg and end game. 
+
+
+-Dynamic data integrity check - Highlight and disallow wrong values
+

@@ -9,108 +9,20 @@
 <body>
   <H2>Sudoku 9x9</H2>
   <div id="game">
-    <table id="mainTable">
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
-      </tr>
-    </table>
-  </div>
+    <div id="numbers-container">
+      <div id="table"></div>
+      <div id="number-container">
+        <p id="num1" class="number" onclick="handleNumberClick">1</p>
+        <p id="num2" class="number" onclick="handleNumberClick">2</p>
+        <p id="num3" class="number" onclick="handleNumberClick">3</p>
+        <p id="num4" class="number" onclick="handleNumberClick">4</p>
+        <p id="num5" class="number" onclick="handleNumberClick">5</p>
+        <p id="num6" class="number" onclick="handleNumberClick">6</p>
+        <p id="num7" class="number" onclick="handleNumberClick">7</p>
+        <p id="num8" class="number" onclick="handleNumberClick">8</p>
+        <p id="num9" class="number" onclick="handleNumberClick">9</p>
+      </div>
+    </div>
   <div id="options">
     <h4> Add restart and New Game buttons</h4>
     <h4>Timer: "Add timer and reset button"</h4>
