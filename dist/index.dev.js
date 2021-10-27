@@ -42,6 +42,8 @@ window.onload = function () {
 
 function handleCellClick() {
   clickedCell = this;
+  console.log(clickedCell.classList); // if(clickedCell.classList.)
+
   var selectedCell = document.querySelector(".cell.cell--selected");
 
   if (!selectedCell) {

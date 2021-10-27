@@ -30,7 +30,7 @@ var cells; // loaded only once but cant declare it as global const as it is popu
 
 ===========================================
 TODO: 
-- when number is clicked, if there is a selected cell, add number.value to seelctedcell.inner HTML
+-store user entries
 - If number selected is not as per solution, make font red, blink for 2 seconds and remove. Keep selection.
 - After each number is added, check if added numbers = solution. If yes, display msg and end game. 
 ==============================================

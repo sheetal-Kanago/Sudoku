@@ -48,6 +48,8 @@ window.onload=function(){
 
 function handleCellClick(){
   clickedCell=this; 
+  console.log(clickedCell.classList);
+  if(clickedCell.classList.value.includes("cell--fixedd")){return;}//dont allow selection of fixed cells
   let selectedCell=document.querySelector(".cell.cell--selected");
   if(!selectedCell){ //if no cell is selected, select the curent one.
     clickedCell.classList.add("cell--selected");
@@ -77,9 +79,7 @@ function startGame(){
     }else{
       cells[i].innerHTML=cellValue;
       cells[i].classList.add("cell--fixedd"); 
-    }
-
-    
+    }    
   }  
   let selectedCell=document.querySelector(".cell.cell--selected");
   if(selectedCell){ //if no cell is selected, select the curent one.
@@ -91,4 +91,3 @@ function reset(){
   startGame();
 }
 
-//store user entries and check for game completion
