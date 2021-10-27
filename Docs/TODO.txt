@@ -26,7 +26,7 @@ Design:
 - chk for sudoku API
 ===========================================
 Questions:
-
+var cells; // loaded only once but cant declare it as global const as it is populated later????
 
 ===========================================
 TODO: 
