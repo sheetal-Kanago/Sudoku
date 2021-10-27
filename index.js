@@ -1,7 +1,8 @@
 //load boards 
 
 const easy = [
-  "6------7------5-2------1---362----81--96-----71--9-4-5-2---651---78----345-------",
+  //"6------7------5-2------1---362----81--96-----71--9-4-5-2---651---78----345-------",
+  "68532917497148532623476185936257498154961873271829346582394651719785264345613729-",
   "685329174971485326234761859362574981549618732718293465823946517197852643456137298"
 ];
 const medium = [
@@ -75,7 +76,12 @@ function handleNumberClick(numClicked){
   userEntries = userEntries.join('');
   // userEntries[selectedCell.id]= numClicked.innerHTML;//add to useEntries array
   console.log(userEntries);
+  console.log(selectedGame[0]);
+  console.log(userEntries === selectedGame[1]);
   //check for game completion
+  if(userEntries === selectedGame[1]){
+    console.log("Game completed!!");
+  }
 }
 
 function startGame(){
