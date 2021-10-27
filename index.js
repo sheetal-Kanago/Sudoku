@@ -19,8 +19,10 @@ var selectedNum;
 var selectedTile;
 var disableSelect;
 var cells; // loaded only once but cant declare it as global const as it is populated later????
+
 let userEntries="";
 
+selectedGame=easy//make this dynamic
 
 window.onload=function(){
   //Create blank table
@@ -48,7 +50,7 @@ window.onload=function(){
 
 function handleCellClick(){
   clickedCell=this; 
-  console.log(clickedCell.classList);
+  // console.log(clickedCell.classList);
   if(clickedCell.classList.value.includes("cell--fixedd")){return;}//dont allow selection of fixed cells
   let selectedCell=document.querySelector(".cell.cell--selected");
   if(!selectedCell){ //if no cell is selected, select the curent one.
@@ -68,6 +70,12 @@ function handleNumberClick(numClicked){
   }  
   selectedCell.innerHTML=numClicked.innerHTML; //Add number value to selectedCell.innerHTML to selected cell
   selectedCell.classList.remove("cell--selected") //clear selection
+  userEntries = userEntries.split('');
+  userEntries[selectedCell.id]= numClicked.innerHTML;//add to useEntries array
+  userEntries = userEntries.join('');
+  // userEntries[selectedCell.id]= numClicked.innerHTML;//add to useEntries array
+  console.log(userEntries);
+  //check for game completion
 }
 
 function startGame(){
@@ -85,6 +93,7 @@ function startGame(){
   if(selectedCell){ //if no cell is selected, select the curent one.
     selectedCell.classList.remove("cell--selected");//clear selection 
   } 
+  userEntries=easy[0];//initialize board
 }
 
 function reset(){
