@@ -22,5 +22,8 @@
     font-weight: bolder;
     background-color: $highLight-color;
   }
+  &--error{
+    color: red;
+  }
 
 }

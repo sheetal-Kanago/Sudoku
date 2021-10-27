@@ -19,6 +19,9 @@
   font-weight: bolder;
   background-color: lightgray;
 }
+.cell--error {
+  color: red;
+}
 
 #mainTable {
   border: 2px solid black;

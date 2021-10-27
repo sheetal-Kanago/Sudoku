@@ -1,8 +1,8 @@
 //load boards 
 
 const easy = [
-  //"6------7------5-2------1---362----81--96-----71--9-4-5-2---651---78----345-------",
-  "68532917497148532623476185936257498154961873271829346582394651719785264345613729-",
+  // "6------7------5-2------1---362----81--96-----71--9-4-5-2---651---78----345-------",
+  "6853291749714853262347618593625749815496187327182934658239465171978526434561372--",
   "685329174971485326234761859362574981549618732718293465823946517197852643456137298"
 ];
 const medium = [
@@ -20,10 +20,10 @@ var selectedNum;
 var selectedTile;
 var disableSelect;
 var cells; // loaded only once but cant declare it as global const as it is populated later????
-
 let userEntries="";
-
 selectedGame=easy//make this dynamic
+
+const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
 window.onload=function(){
   //Create blank table
@@ -69,19 +69,39 @@ function handleNumberClick(numClicked){
   if(!selectedCell){ //if no cell is selected, do nothing.
     return;
   }  
-  selectedCell.innerHTML=numClicked.innerHTML; //Add number value to selectedCell.innerHTML to selected cell
-  selectedCell.classList.remove("cell--selected") //clear selection
-  userEntries = userEntries.split('');
-  userEntries[selectedCell.id]= numClicked.innerHTML;//add to useEntries array
-  userEntries = userEntries.join('');
-  // userEntries[selectedCell.id]= numClicked.innerHTML;//add to useEntries array
-  console.log(userEntries);
-  console.log(selectedGame[0]);
-  console.log(userEntries === selectedGame[1]);
-  //check for game completion
-  if(userEntries === selectedGame[1]){
-    console.log("Game completed!!");
+  
+  if(validateUserEntry(numClicked.innerHTML,selectedCell.id)){
+    selectedCell.classList.remove("cell--selected") //clear selection
+    // if(selectedCell.classList.includes("cell--error"))
+    selectedCell.classList.remove("cell--error");
+    selectedCell.innerHTML=numClicked.innerHTML; //Add number value to selectedCell.innerHTML to selected cell  
+    userEntries = userEntries.split('');
+    userEntries[selectedCell.id]= numClicked.innerHTML;//add to useEntries array
+    userEntries = userEntries.join('');
+    //check for game completion
+    if(userEntries === selectedGame[1]){
+      console.log("Game completed!!");
+    }
+  }else{ //entry is invalid
+    selectedCell.innerHTML=numClicked.innerHTML; //Add number value to selectedCell.innerHTML to selected cell  
+    selectedCell.classList.add("cell--error");//display cell error
+    // sleep(3000).then(() => console.log("waited 1 second!"))
+    // selectedCell.innerHTML=" "//remove entry
+    // selectedCell.classList.remove("cell--error");//clear error formatting
+     selectedCell.classList.remove("cell--selected") //clear selection
   }
+
+}
+
+function validateUserEntry(numberEntered,cellIndex){
+  if(numberEntered === selectedGame[1].charAt(cellIndex)){
+    console.log("validateUserEntry=true");
+    return true;
+  }else{
+    console.log("validateUserEntry=false")
+    return false;
+  }
+  
 }
 
 function startGame(){
