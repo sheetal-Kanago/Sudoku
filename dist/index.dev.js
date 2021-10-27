@@ -34,34 +34,7 @@ window.onload = function () {
     cell.addEventListener("click", handleCellClick);
     table.appendChild(cell); // cell.onclick=cell.classList.add("cell--selected");
   }
-
-  cells = document.querySelectorAll(".cell");
-  console.log("cells.length", cells.length); // startGame();//call this when start button is clicked.
 };
-
-function handleCellClick() {
-  //if it is already selected, deselect it
-  // let clickedCell=document.getElementById(cellID);
-  clickedCell = this;
-  var selectedCell = document.querySelector(".cell.cell--selected");
-
-  if (!selectedCell) {
-    //if no cell is selected, select the curent one.
-    // console.log("in !selectedCell");
-    clickedCell.classList.add("cell--selected"); // console.log(clickedCell.classList);
-
-    return;
-  }
-
-  console.log("clickedCell.id", clickedCell.id);
-  console.log("selectedCell.id", selectedCell.id);
-  selectedCell.classList.remove("cell--selected"); //clear selection  
-
-  if (clickedCell.id != selectedCell.id) {
-    //If there is a selected cell and some other cell is clicked. clear selection and select this cell.        
-    clickedCell.classList.add("cell--selected");
-  }
-}
 
 function startGame() {
   console.log("In startGame()"); // console.log(document.getElementsByClassName("cell"));
@@ -82,6 +55,33 @@ function startGame() {
   }
 }
 
-function id(id) {
-  return document.getElementById(id);
+function handleCellClick() {
+  clickedCell = this;
+  var selectedCell = document.querySelector(".cell.cell--selected");
+
+  if (!selectedCell) {
+    //if no cell is selected, select the curent one.
+    clickedCell.classList.add("cell--selected");
+    return;
+  }
+
+  selectedCell.classList.remove("cell--selected"); //clear selection  
+
+  if (clickedCell.id != selectedCell.id) {
+    //If there is a selected cell and some other cell is clicked, select this cell.        
+    clickedCell.classList.add("cell--selected");
+  }
+}
+
+function handleNumberClick(numClicked) {
+  var selectedCell = document.querySelector(".cell.cell--selected");
+
+  if (!selectedCell) {
+    //if no cell is selected, do nothing.
+    return;
+  } //if cell is selected, add number value to selectedCell.innerHTML
+
+
+  console.log(this.id);
+  selectedCell.innerHTML = numClicked.innerHTML;
 }

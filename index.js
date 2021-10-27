@@ -73,3 +73,12 @@ function handleCellClick(){
     clickedCell.classList.add("cell--selected");
   }
 }
+
+function handleNumberClick(numClicked){
+  let selectedCell=document.querySelector(".cell.cell--selected");
+  if(!selectedCell){ //if no cell is selected, do nothing.
+    return;
+  }
+  //if cell is selected, add number value to selectedCell.innerHTML
+  selectedCell.innerHTML=numClicked.innerHTML;
+}
