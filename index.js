@@ -41,24 +41,7 @@ window.onload=function(){
     table.appendChild(cell);
     // cell.onclick=cell.classList.add("cell--selected");
   }
-}
-
-function startGame(){
-  console.log("In startGame()");
-  // console.log(document.getElementsByClassName("cell"));
-  let cells=document.getElementsByClassName("cell");
-  // console.log(cells[0]);
-  // console.log(cells[80]);
-  // console.log(cells.length);
-  for(let i=0;i<cells.length;i++){
-  // cells.forEach((cell,index) => {
-    let cellValue=easy[0].charAt(i);
-    if(cellValue=="-"){
-      cellValue=" ";
-    }
-    cells[i].innerHTML=cellValue;
-    // console.log(cell.innerHTML);    
-  }  
+  startGame();
 }
 
 function handleCellClick(){
@@ -81,4 +64,23 @@ function handleNumberClick(numClicked){
   }
   //if cell is selected, add number value to selectedCell.innerHTML
   selectedCell.innerHTML=numClicked.innerHTML;
+}
+
+function startGame(){
+  let cells=document.getElementsByClassName("cell");
+  for(let i=0;i<cells.length;i++){
+    let cellValue=easy[0].charAt(i);
+    if(cellValue=="-"){
+      cellValue=" ";
+    }
+    cells[i].innerHTML=cellValue;
+  }  
+  let selectedCell=document.querySelector(".cell.cell--selected");
+  if(selectedCell){ //if no cell is selected, select the curent one.
+    selectedCell.classList.remove("cell--selected");//clear selection 
+  } 
+}
+
+function reset(){
+  startGame();
 }
