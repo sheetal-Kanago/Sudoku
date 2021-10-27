@@ -59,15 +59,15 @@ body.dark {
 #number-container {
   width: 25px;
   margin-left: 25px;
-  margin-top: 0px;
+  margin-top: 5px;
 }
 
 .number {
   background-color: lightgray;
   border: 1px solid black;
   border-radius: 5px;
-  height: 21px;
-  width: 21px;
+  height: 18px;
+  width: 18px;
   margin: 4px;
   vertical-align: middle;
   text-align: center;
