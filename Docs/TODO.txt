@@ -33,6 +33,10 @@ TODO:
 - when number is clicked, if there is a selected cell, add number.value to seelctedcell.inner HTML
 - If number selected is not as per solution, make font red, blink for 2 seconds and remove. Keep selection.
 - After each number is added, check if added numbers = solution. If yes, display msg and end game. 
+==============================================
+DONE:
+-MAke game provided numbers bold. user entries in normal font
+-deselct celll after adding number
 
 
 -Dynamic data integrity check - Highlight and disallow wrong values

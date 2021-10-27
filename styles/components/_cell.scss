@@ -14,7 +14,13 @@
   &--bottomBorder{
     border-bottom: 2px solid black;
   }
+  
   &--selected{
     background-color: $highLight-color;
   }
+  &--fixedd{
+    font-weight: bolder;
+    background-color: $highLight-color;
+  }
+
 }

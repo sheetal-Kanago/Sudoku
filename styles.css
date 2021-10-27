@@ -15,6 +15,10 @@
 .cell--selected {
   background-color: lightgray;
 }
+.cell--fixedd {
+  font-weight: bolder;
+  background-color: lightgray;
+}
 
 #mainTable {
   border: 2px solid black;

@@ -13,5 +13,10 @@
   border-bottom: 2px solid black;
 }
 .cell--selected {
-  background-color: #f5abab;
+  background-color: lightgray;
+}
+
+.cell--fixedd {
+  font-weight: bolder;
+  background-color: lightgray;
 }

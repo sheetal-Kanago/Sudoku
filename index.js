@@ -19,6 +19,8 @@ var selectedNum;
 var selectedTile;
 var disableSelect;
 var cells; // loaded only once but cant declare it as global const as it is populated later????
+let userEntries="";
+
 
 window.onload=function(){
   //Create blank table
@@ -61,9 +63,9 @@ function handleNumberClick(numClicked){
   let selectedCell=document.querySelector(".cell.cell--selected");
   if(!selectedCell){ //if no cell is selected, do nothing.
     return;
-  }
-  //if cell is selected, add number value to selectedCell.innerHTML
-  selectedCell.innerHTML=numClicked.innerHTML;
+  }  
+  selectedCell.innerHTML=numClicked.innerHTML; //Add number value to selectedCell.innerHTML to selected cell
+  selectedCell.classList.remove("cell--selected") //clear selection
 }
 
 function startGame(){
@@ -71,9 +73,13 @@ function startGame(){
   for(let i=0;i<cells.length;i++){
     let cellValue=easy[0].charAt(i);
     if(cellValue=="-"){
-      cellValue=" ";
+      cells[i].innerHTML=" ";
+    }else{
+      cells[i].innerHTML=cellValue;
+      cells[i].classList.add("cell--fixedd"); 
     }
-    cells[i].innerHTML=cellValue;
+
+    
   }  
   let selectedCell=document.querySelector(".cell.cell--selected");
   if(selectedCell){ //if no cell is selected, select the curent one.
@@ -84,3 +90,5 @@ function startGame(){
 function reset(){
   startGame();
 }
+
+//store user entries and check for game completion

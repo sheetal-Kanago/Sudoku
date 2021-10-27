@@ -11,6 +11,8 @@ var selectedTile;
 var disableSelect;
 var cells; // loaded only once but cant declare it as global const as it is populated later????
 
+var userEntries = "";
+
 window.onload = function () {
   //Create blank table
   var cell;
@@ -34,26 +36,9 @@ window.onload = function () {
     cell.addEventListener("click", handleCellClick);
     table.appendChild(cell); // cell.onclick=cell.classList.add("cell--selected");
   }
+
+  startGame();
 };
-
-function startGame() {
-  console.log("In startGame()"); // console.log(document.getElementsByClassName("cell"));
-
-  var cells = document.getElementsByClassName("cell"); // console.log(cells[0]);
-  // console.log(cells[80]);
-  // console.log(cells.length);
-
-  for (var i = 0; i < cells.length; i++) {
-    // cells.forEach((cell,index) => {
-    var cellValue = easy[0].charAt(i);
-
-    if (cellValue == "-") {
-      cellValue = " ";
-    }
-
-    cells[i].innerHTML = cellValue; // console.log(cell.innerHTML);    
-  }
-}
 
 function handleCellClick() {
   clickedCell = this;
@@ -79,9 +64,35 @@ function handleNumberClick(numClicked) {
   if (!selectedCell) {
     //if no cell is selected, do nothing.
     return;
-  } //if cell is selected, add number value to selectedCell.innerHTML
+  }
 
+  selectedCell.innerHTML = numClicked.innerHTML; //Add number value to selectedCell.innerHTML to selected cell
 
-  console.log(this.id);
-  selectedCell.innerHTML = numClicked.innerHTML;
+  selectedCell.classList.remove("cell--selected"); //clear selection
 }
+
+function startGame() {
+  var cells = document.getElementsByClassName("cell");
+
+  for (var i = 0; i < cells.length; i++) {
+    var cellValue = easy[0].charAt(i);
+
+    if (cellValue == "-") {
+      cells[i].innerHTML = " ";
+    } else {
+      cells[i].innerHTML = cellValue;
+      cells[i].classList.add("cell--fixedd");
+    }
+  }
+
+  var selectedCell = document.querySelector(".cell.cell--selected");
+
+  if (selectedCell) {
+    //if no cell is selected, select the curent one.
+    selectedCell.classList.remove("cell--selected"); //clear selection 
+  }
+}
+
+function reset() {
+  startGame();
+} //store user entries and check for game completion
