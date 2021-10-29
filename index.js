@@ -45,16 +45,20 @@ const boards= [
   ],
 ]
 
+
 //vars
 var timer;
 var selectedNum;
 var selectedTile;
 var disableSelect;
-var cells; // loaded only once but cant declare it as global const as it is populated later????
+//let cells; // loaded only once but cant declare it as global const as it is populated later????
 let userEntries="";
 //selectedGame=newBoard//make this dynamic
-
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+
+const rows=[];
+const cols=[];
+const boxes=[];
 
 window.onload=function(){
   //Create blank table, format it and add listeners
@@ -76,8 +80,19 @@ window.onload=function(){
     cell.addEventListener("click",handleCellClick)
     table.appendChild(cell);
   }
+  initRowColBox();
   newGame();
 }
+
+function initRowColBox(){
+  for (let r=0,index=0;r<9;r++){
+    for (let i=0;i<9;i++,index++){
+      rows[r].add(index);
+    }
+  }
+  console.log(rows);
+}
+
 
 function loadSelectedGame(){
   let cells=document.getElementsByClassName("cell");
@@ -101,16 +116,17 @@ function loadSelectedGame(){
 function newGame(){
   hideWin();
   selectedGame=boards[Math.floor(Math.random() * 10)];
-  // selectedGame=boards[10];
+  //selectedGame=boards[10];
   clearBoard();
   loadSelectedGame();
+  resetTimer();
 }
-
 
 function resetGame(){
   hideWin();
   userEntries=selectedGame[0];//initialize board
   loadSelectedGame();
+  resetTimer();
 }
 
 function clearBoard(){
@@ -178,6 +194,7 @@ function validateUserEntry(numberEntered,cellIndex){
 }
 
 function showWin(){
+  stopTimer();
   //disable all cells and numbers
   let cells=document.getElementsByClassName("cell");
   for(let i=0;i<cells.length;i++){
@@ -187,10 +204,13 @@ function showWin(){
   for(let i=0;i<numbers.length;i++){
     numbers[i].classList.add("number--disabled");    
   }
+  //add timer to message
+  let winMsg=document.getElementById("win");
   // display message
-  // id="win"
-  document.getElementById("win").classList.remove("hidden");
+  winMsg.classList.remove("hidden");
+  
 }
+
 function hideWin(){
   //disable all cells and numbers
   let cells=document.getElementsByClassName("cell");
@@ -204,4 +224,20 @@ function hideWin(){
   // display message
   // id="win"
   document.getElementById("win").classList.add("hidden");
+
+
+}
+
+function resetTimer(){
+    
+  return;
+}
+
+function stopTimer(){
+  return;
+}
+
+function getTimerString(){
+  //min:sec
+  return;
 }

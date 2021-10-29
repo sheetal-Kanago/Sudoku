@@ -5,8 +5,7 @@ var boards = [["6------7------5-2------1---362----81--96-----71--9-4-5-2---651--
 var timer;
 var selectedNum;
 var selectedTile;
-var disableSelect;
-var cells; // loaded only once but cant declare it as global const as it is populated later????
+var disableSelect; //let cells; // loaded only once but cant declare it as global const as it is populated later????
 
 var userEntries = ""; //selectedGame=newBoard//make this dynamic
 
@@ -15,6 +14,10 @@ var sleep = function sleep(milliseconds) {
     return setTimeout(resolve, milliseconds);
   });
 };
+
+var rows = [];
+var cols = [];
+var boxes = [];
 
 window.onload = function () {
   //Create blank table, format it and add listeners
@@ -40,8 +43,19 @@ window.onload = function () {
     table.appendChild(cell);
   }
 
+  initRowColBox();
   newGame();
 };
+
+function initRowColBox() {
+  for (var r = 0, index = 0; r < 9; r++) {
+    for (var i = 0; i < 9; i++, index++) {
+      rows[r].add(index);
+    }
+  }
+
+  console.log(rows);
+}
 
 function loadSelectedGame() {
   var cells = document.getElementsByClassName("cell");
@@ -69,11 +83,12 @@ function loadSelectedGame() {
 }
 
 function newGame() {
-  hideWin();
-  selectedGame = boards[Math.floor(Math.random() * 10)]; // selectedGame=boards[10];
+  hideWin(); // selectedGame=boards[Math.floor(Math.random() * 10)];
 
+  selectedGame = boards[10];
   clearBoard();
   loadSelectedGame();
+  resetTimer();
 }
 
 function resetGame() {
@@ -81,6 +96,7 @@ function resetGame() {
   userEntries = selectedGame[0]; //initialize board
 
   loadSelectedGame();
+  resetTimer();
 }
 
 function clearBoard() {
@@ -170,7 +186,8 @@ function validateUserEntry(numberEntered, cellIndex) {
 }
 
 function showWin() {
-  //disable all cells and numbers
+  stopTimer(); //disable all cells and numbers
+
   var cells = document.getElementsByClassName("cell");
 
   for (var i = 0; i < cells.length; i++) {
@@ -181,11 +198,12 @@ function showWin() {
 
   for (var _i = 0; _i < numbers.length; _i++) {
     numbers[_i].classList.add("number--disabled");
-  } // display message
-  // id="win"
+  } //add timer to message
 
 
-  document.getElementById("win").classList.remove("hidden");
+  var winMsg = document.getElementById("win"); // display message
+
+  winMsg.classList.remove("hidden");
 }
 
 function hideWin() {
@@ -205,4 +223,17 @@ function hideWin() {
 
 
   document.getElementById("win").classList.add("hidden");
+}
+
+function resetTimer() {
+  return;
+}
+
+function stopTimer() {
+  return;
+}
+
+function getTimerString() {
+  //min:sec
+  return;
 }

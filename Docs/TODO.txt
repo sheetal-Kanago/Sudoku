@@ -5,39 +5,22 @@ ManInfra
 Features:
 
 Must have:
--Navigation - mouse
--Highlight/disallow incorrect values
--HOw to play - documentation
-
-
+timer
+add to portfolio
 
 Good to have:
 -Themes
--Navigation - KEyboard
 -small numbers
 -difficulty level
+-best scores/records. Need persistence.
 - API - difficult
 
 ===========================================
 
 Design:
--Use a 9*9 grid
--predefined templates
 - chk for sudoku API
 ===========================================
 Questions:
 var cells; // loaded only once but cant declare it as global const as it is populated later????
 
 ===========================================
-TODO: 
--store user entries
-- If number selected is not as per solution, make font red, blink for 2 seconds and remove. Keep selection.
-- After each number is added, check if added numbers = solution. If yes, display msg and end game. 
-==============================================
-DONE:
--MAke game provided numbers bold. user entries in normal font
--deselct celll after adding number
-
-
--Dynamic data integrity check - Highlight and disallow wrong values
-
