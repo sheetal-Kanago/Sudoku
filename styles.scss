@@ -59,7 +59,8 @@ body.dark{
 }
 
 .buttons-container{
-  margin-top: 15px;
+  margin-top: 25px;
+  // background-image: "./images/DropsOnGrass.jpg";
 }
 
 .buttons-container > button{
@@ -69,4 +70,14 @@ body.dark{
 a{
   color: black;
   text-decoration: none;
+}
+
+#win{
+  color: purple;
+}
+
+body{
+  // background-image: url("./images/DropsOnGrass.jpg");
+
+  background-color:rgba(192, 203, 218, 0.699);
 }

@@ -39,6 +39,10 @@ const boards= [
     "5-1-27684684-3572-72-68-------4--2-6-63578---14-296--54-53--19-8--74--523--8---6-",
     "531927684684135729729684513958413276263578941147296835475362198816749352392851467"
   ],
+  [
+    "5319276846841357297296845139584132762635789411472968354753621988167493523928514--",
+    "531927684684135729729684513958413276263578941147296835475362198816749352392851467"
+  ],
 ]
 
 //vars
@@ -95,20 +99,29 @@ function loadSelectedGame(){
 }
 
 function newGame(){
+  hideWin();
   //select random game from 0-9
-  selectedGame=boards[Math.floor(Math.random() * 10)];
+  // selectedGame=boards[Math.floor(Math.random() * 10)];
+  selectedGame=boards[10];
   clearBoard();
-  loadGame();
+  loadSelectedGame();
 }
 
 
 function resetGame(){
+  hideWin();
   userEntries=selectedGame[0];//initialize board
-  loadGame();
+  loadSelectedGame();
 }
 
 function clearBoard(){
-  
+  //remove classes:
+  let cells=document.getElementsByClassName("cell");
+  for(let i=0;i<cells.length;i++){
+    cells[i].classList.remove("cell--disabled");    
+    cells[i].classList.remove("cell--selected");    
+    cells[i].classList.remove("cell--error");    
+  } 
 }
 
 function handleCellClick(){
@@ -143,7 +156,7 @@ function handleNumberClick(numClicked){
     //check for game completion
     if(userEntries === selectedGame[1]){
       console.log("Game completed!!");
-      gameWon();
+      showWin();
     }
   }else{ //entry is invalid
     selectedCell.innerHTML=numClicked.innerHTML; //Add number value to selectedCell.innerHTML to selected cell  
@@ -165,16 +178,31 @@ function validateUserEntry(numberEntered,cellIndex){
   }  
 }
 
-function gameWon(){
+function showWin(){
   //disable all cells and numbers
   let cells=document.getElementsByClassName("cell");
   for(let i=0;i<cells.length;i++){
-    cells[i].classList.add("cells--disabled");    
+    cells[i].classList.add("cell--disabled");    
   }  
   let numbers=document.getElementsByClassName("number");
   for(let i=0;i<numbers.length;i++){
     numbers[i].classList.add("number--disabled");    
   }
   // display message
-  
+  // id="win"
+  document.getElementById("win").classList.remove("hidden");
+}
+function hideWin(){
+  //disable all cells and numbers
+  let cells=document.getElementsByClassName("cell");
+  for(let i=0;i<cells.length;i++){
+    cells[i].classList.remove("cell--disabled");    
+  }  
+  let numbers=document.getElementsByClassName("number");
+  for(let i=0;i<numbers.length;i++){
+    numbers[i].classList.remove("number--disabled");    
+  }
+  // display message
+  // id="win"
+  document.getElementById("win").classList.add("hidden");
 }
