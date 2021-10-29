@@ -100,9 +100,8 @@ function loadSelectedGame(){
 
 function newGame(){
   hideWin();
-  //select random game from 0-9
-  // selectedGame=boards[Math.floor(Math.random() * 10)];
-  selectedGame=boards[10];
+  selectedGame=boards[Math.floor(Math.random() * 10)];
+  // selectedGame=boards[10];
   clearBoard();
   loadSelectedGame();
 }

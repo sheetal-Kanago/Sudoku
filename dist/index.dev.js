@@ -69,14 +69,15 @@ function loadSelectedGame() {
 }
 
 function newGame() {
-  //select random game from 0-9
-  // selectedGame=boards[Math.floor(Math.random() * 10)];
-  selectedGame = boards[10];
+  hideWin();
+  selectedGame = boards[Math.floor(Math.random() * 10)]; // selectedGame=boards[10];
+
   clearBoard();
   loadSelectedGame();
 }
 
 function resetGame() {
+  hideWin();
   userEntries = selectedGame[0]; //initialize board
 
   loadSelectedGame();
