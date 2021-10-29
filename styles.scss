@@ -52,6 +52,10 @@ body.dark{
   margin:4px;
   vertical-align: middle;
   text-align: center;
+
+  &--disabled{
+    margin:4px;
+  }
 }
 
 .buttons-container{
@@ -60,4 +64,9 @@ body.dark{
 
 .buttons-container > button{
   background-color: abstracts.$highLight-color;
+}
+
+a{
+  color: black;
+  text-decoration: none;
 }

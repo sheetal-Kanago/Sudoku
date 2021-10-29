@@ -40,6 +40,7 @@ const boards= [
     "531927684684135729729684513958413276263578941147296835475362198816749352392851467"
   ],
 ]
+
 //vars
 var timer;
 var selectedNum;
@@ -52,7 +53,7 @@ let userEntries="";
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
 window.onload=function(){
-  //Create blank table
+  //Create blank table, format it and add listeners
   var cell;
   let table=document.getElementById("table");
   for(let i=0;i<81;i++){
@@ -70,19 +71,17 @@ window.onload=function(){
     }
     cell.addEventListener("click",handleCellClick)
     table.appendChild(cell);
-    // cell.onclick=cell.classList.add("cell--selected");
   }
-  startGame();
+  newGame();
 }
 
-function startGame(){
-  //select random game from 0-9
-  selectedGame=boards[Math.floor(Math.random() * 10)];
+function loadSelectedGame(){
   let cells=document.getElementsByClassName("cell");
   for(let i=0;i<cells.length;i++){
     let cellValue=selectedGame[0].charAt(i);
     if(cellValue=="-"){
       cells[i].innerHTML=" ";
+      cells[i].classList.remove("cell--fixedd"); 
     }else{
       cells[i].innerHTML=cellValue;
       cells[i].classList.add("cell--fixedd"); 
@@ -95,10 +94,27 @@ function startGame(){
   userEntries=selectedGame[0];//initialize board
 }
 
+function newGame(){
+  //select random game from 0-9
+  selectedGame=boards[Math.floor(Math.random() * 10)];
+  clearBoard();
+  loadGame();
+}
+
+
+function resetGame(){
+  userEntries=selectedGame[0];//initialize board
+  loadGame();
+}
+
+function clearBoard(){
+  
+}
+
 function handleCellClick(){
   clickedCell=this; 
   // console.log(clickedCell.classList);
-  if(clickedCell.classList.value.includes("cell--fixedd")){return;}//dont allow selection of fixed cells
+  if(clickedCell.classList.value.includes("cell--fixedd")||clickedCell.classList.value.includes("cell--disabled")){return;}//dont allow selection of fixed cells
   let selectedCell=document.querySelector(".cell.cell--selected");
   if(!selectedCell){ //if no cell is selected, select the curent one.
     clickedCell.classList.add("cell--selected");
@@ -115,7 +131,7 @@ function handleNumberClick(numClicked){
   if(!selectedCell){ //if no cell is selected, do nothing.
     return;
   }  
-  
+  if(numClicked.classList.value.includes("number--disabled")){return;}
   if(validateUserEntry(numClicked.innerHTML,selectedCell.id)){
     selectedCell.classList.remove("cell--selected") //clear selection
     // if(selectedCell.classList.includes("cell--error"))
@@ -127,6 +143,7 @@ function handleNumberClick(numClicked){
     //check for game completion
     if(userEntries === selectedGame[1]){
       console.log("Game completed!!");
+      gameWon();
     }
   }else{ //entry is invalid
     selectedCell.innerHTML=numClicked.innerHTML; //Add number value to selectedCell.innerHTML to selected cell  
@@ -148,7 +165,16 @@ function validateUserEntry(numberEntered,cellIndex){
   }  
 }
 
-
-function reset(){
-  startGame();
+function gameWon(){
+  //disable all cells and numbers
+  let cells=document.getElementsByClassName("cell");
+  for(let i=0;i<cells.length;i++){
+    cells[i].classList.add("cells--disabled");    
+  }  
+  let numbers=document.getElementsByClassName("number");
+  for(let i=0;i<numbers.length;i++){
+    numbers[i].classList.add("number--disabled");    
+  }
+  // display message
+  
 }

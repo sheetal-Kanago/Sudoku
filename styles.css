@@ -22,6 +22,9 @@
 .cell--error {
   color: red;
 }
+.cell--disabled {
+  margin: 0px;
+}
 
 #mainTable {
   border: 2px solid black;
@@ -72,6 +75,9 @@ body.dark {
   vertical-align: middle;
   text-align: center;
 }
+.number--disabled {
+  margin: 4px;
+}
 
 .buttons-container {
   margin-top: 15px;
@@ -79,4 +85,9 @@ body.dark {
 
 .buttons-container > button {
   background-color: lightgray;
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }
